@@ -1,69 +1,61 @@
-# React + TypeScript + Vite
+# Stock Manager Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend de la aplicación de gestión de stock, compras y ventas para el emprendimiento de frutos secos.  
+Construido con **React + TypeScript + Vite**, usando **TailwindCSS** para los estilos.
 
-Currently, two official plugins are available:
+## 🚀 Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Gestión de **productos** (alta, listado, edición).
+- Registro y anulación de **compras** (con reglas de consolidación de stock).
+- Registro y anulación de **ventas** (con reposición de stock en caso de anulación).
+- Consulta de **historial de precios** de cada producto.
+- Consulta de **ganancias** en un rango de fechas, con detalle por venta y total.
+- Todas las fechas se muestran en **hora Argentina (UTC-3)**.
+- Todos los montos se muestran en **ARS ($)**.
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologías utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 18 + TypeScript**
+- **Vite**
+- **TailwindCSS**
+- **Axios** (para comunicación con el backend)
+- **React Router DOM**
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📂 Estructura del proyecto
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+src/
+├── components/ # Navbar, tablas reutilizables, etc.
+├── pages/ # Páginas principales (Productos, Compras, Ventas, Precios, Ganancias)
+├── utils/ # Helpers (formatCurrency, formatDateTime, etc.)
+├── App.tsx # Definición de rutas
+└── main.tsx # Punto de entrada
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## ⚙️ Instalación y ejecución
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Clonar el repositorio:
+   ```bash
+   git clone git@github.com:pgg11/stock-manager-frontend.git
+   cd stock-manager-frontend
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. Instalar dependencias:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+  `npm install`
+
+3. Ejecutar en modo desarrollo:
+
+  `npm run dev`
+
+La app estará disponible en http://localhost:5173.
+
+🔗 Backend
+
+Este frontend se conecta con el backend desarrollado en Flask + SQLite.
+
+Repositorio del backend: [stock-manager-backend](https://github.com/pgg11/stock-manager-backend)
+
+📌 Pendientes / To-Do
+
+* Mejorar manejo de errores en formularios.
+* Validaciones más detalladas en frontend.
+* Pruebas automáticas.
+* Despliegue.
